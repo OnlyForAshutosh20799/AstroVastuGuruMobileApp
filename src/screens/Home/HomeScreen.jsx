@@ -1,14 +1,19 @@
-import React from "react";
-import { View, ScrollView, Text } from "react-native";
-import HeroSection from "./components/HeroSection";
-import ServiceSection from "./components/ServiceSection";
-import tw from "twrnc";
-import ZodiacSignSection from "./components/ZodiacSignSection";
-import ConsultWithExpertSection from "./components/ConsultWithExpertSection";
+import React from 'react';
+import { View, ScrollView, Text } from 'react-native';
+import HeroSection from './components/HeroSection';
+import ServiceSection from './components/ServiceSection';
+import tw from 'twrnc';
+import ZodiacSignSection from './components/ZodiacSignSection';
+import ConsultWithExpertSection from './components/ConsultWithExpertSection';
 
 const HomeScreen = () => {
   return (
-    <ScrollView style={tw`flex-1 bg-white`}>
+    <ScrollView
+      style={tw`flex-1 bg-white`}
+      showsVerticalScrollIndicator={false} // ✅ hide scrollbar
+      overScrollMode="never" // ✅ remove top/bottom glow (Android)
+      bounces={false}
+    >
       <HeroSection />
       <ServiceSection />
       <ZodiacSignSection />
