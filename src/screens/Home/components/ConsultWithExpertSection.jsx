@@ -5,12 +5,11 @@ import {
   TouchableOpacity,
   FlatList,
   Image,
-  useColorScheme,
   Dimensions,
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import tw from "twrnc";
-import { useTheme } from '../../../Context/ThemContext';
+import { useTheme } from "../../../Context/ThemContext";
 
 const { width } = Dimensions.get("window");
 const cardWidth = width * 0.4;
@@ -51,16 +50,14 @@ const astrologers = [
 ];
 
 export default function ConsultWithExpertSection() {
-    const { theme } = useTheme();
-    
-      const isDark = theme.mode === "dark";
-
+  const { theme } = useTheme();
+  const isDark = theme.mode === "dark";
 
   return (
     <View
       style={[
         tw`py-8`,
-        { backgroundColor: theme.background }
+        { backgroundColor: theme.background },
       ]}
     >
       {/* Header */}
@@ -68,20 +65,20 @@ export default function ConsultWithExpertSection() {
         <Text
           style={[
             tw`text-lg font-bold`,
-            { color: isDark ? "#FFFFFF" : "#1E293B" },
+            { color: theme.text },
           ]}
         >
           Consult with Experts
         </Text>
 
-        <TouchableOpacity>
+        <TouchableOpacity activeOpacity={0.8}>
           <Text
             style={[
               tw`text-sm font-semibold`,
               { color: isDark ? "#FFD700" : "#E67E22" },
             ]}
           >
-            See All
+            See All →
           </Text>
         </TouchableOpacity>
       </View>
@@ -94,36 +91,47 @@ export default function ConsultWithExpertSection() {
         keyExtractor={(item) => item.id.toString()}
         snapToInterval={cardWidth + 16}
         decelerationRate="fast"
-         contentContainerStyle={tw`px-2`}
-        renderItem={({ item, index }) => (
+        contentContainerStyle={tw`px-2`}
+        renderItem={({ item }) => (
           <TouchableOpacity
-            activeOpacity={0.9}
+           
             style={[
-              tw`rounded-2xl overflow-hidden mx-2 mb-5 shadow-lg`,
+              tw`rounded-2xl overflow-hidden mx-2`,
               {
                 width: cardWidth,
-                backgroundColor: isDark ? "#1E293B" : "#FFFFFF",
+                backgroundColor: theme.card,
+                borderWidth: 1,
+                borderColor: theme.border,
               },
             ]}
           >
-            {/* Gradient Header */}
-            <View
-
-              style={tw`h-25 items-center justify-center bg-black`}
+            {/* 🌈 Gradient Header */}
+            <LinearGradient
+              colors={item.gradient}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={tw`h-22 items-center justify-center`}
             >
               <Image
                 source={{ uri: item.image }}
-                style={tw`w-20 h-20 rounded-full border-4 border-white`}
+                style={tw`w-15 h-15 rounded-full border-4 border-white`}
                 resizeMode="cover"
               />
-            </View>
+            </LinearGradient>
 
-            {/* Content */}
-            <View style={tw`p-4 bg-black`}>
+            {/* 🌟 Content */}
+            <View
+              style={[
+                tw`py-2`,
+                {
+                  backgroundColor: isDark ? "#0F172A" : "#FFFFFF",
+                },
+              ]}
+            >
               <Text
                 style={[
                   tw`text-lg font-bold text-center`,
-                  { color: isDark ? "#fff" : "#fff" },
+                  { color: theme.text },
                 ]}
               >
                 {item.name}
@@ -132,7 +140,7 @@ export default function ConsultWithExpertSection() {
               <Text
                 style={[
                   tw`text-sm text-center mt-1`,
-                  { color: isDark ? "#fff" : "#fff" },
+                  { color: theme.subText },
                 ]}
               >
                 {item.language}
