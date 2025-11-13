@@ -5,6 +5,7 @@ import ServiceSection from './components/ServiceSection';
 import tw from 'twrnc';
 import ZodiacSignSection from './components/ZodiacSignSection';
 import ConsultWithExpertSection from './components/ConsultWithExpertSection';
+import ComboOffersScreen from './components/ComboOffer';
 
 const HomeScreen = () => {
   return (
@@ -18,6 +19,7 @@ const HomeScreen = () => {
       <ServiceSection />
       <ZodiacSignSection />
       <ConsultWithExpertSection />
+      <ComboOffersScreen />
     </ScrollView>
   );
 };

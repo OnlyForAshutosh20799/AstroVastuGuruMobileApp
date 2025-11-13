@@ -18,7 +18,7 @@ const darkTheme = {
   text: "#FFD700",
   subText: "#E0E0E0",
   primary: "#FF9933",
-  gradient: ["#1C1C1C", "#2A2A2A", "#3B3B3B"],
+  gradient: ["#121212", "#121212", "#121212"],
 };
 
 const ThemeContext = createContext();

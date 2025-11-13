@@ -6,11 +6,11 @@ import { useTheme } from "../Context/ThemContext";
 
 // Screens
 import HomeScreen from "../screens/Home/HomeScreen";
-import KundliScreen from "../screens/Kundli/KundliScreen";
 import HoroscopeScreen from "../screens/Horoscope/HoroscopeScreen";
 import AstrologerScreen from "../screens/Astrologer/AstrologerScreen";
-import BookPoojaScreen from "../screens/BookPooja/BookPoojaScreen";
 import BlogScreen from "../screens/Blog/BlogScreen";
+import BookPoojaStack from "./stackNavigator/stacks/BookPoojaStack";
+import KundliStack from "./stackNavigator/stacks/KundliStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -65,10 +65,10 @@ export default function BottomTabNavigator() {
         })}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Kundli" component={KundliScreen} />
+        <Tab.Screen name="Kundli" component={KundliStack} />
         <Tab.Screen name="Horoscope" component={HoroscopeScreen} />
         <Tab.Screen name="Astrologer" component={AstrologerScreen} />
-        <Tab.Screen name="Book Pooja" component={BookPoojaScreen} />
+        <Tab.Screen name="Book Pooja" component={BookPoojaStack} />
         <Tab.Screen name="Blog" component={BlogScreen} />
       </Tab.Navigator>
     </NavigationContainer>
