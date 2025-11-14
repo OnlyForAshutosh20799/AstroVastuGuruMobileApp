@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   View,
   Text,
@@ -6,68 +6,58 @@ import {
   FlatList,
   Image,
   Dimensions,
-} from "react-native";
-import LinearGradient from "react-native-linear-gradient";
-import tw from "twrnc";
-import { useTheme } from "../../../Context/ThemContext";
+} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import tw from 'twrnc';
+import { useTheme } from '../../../Context/ThemContext';
 
-const { width } = Dimensions.get("window");
+const { width } = Dimensions.get('window');
 const cardWidth = width * 0.4;
 
 const astrologers = [
   {
     id: 1,
-    name: "Priya Sharma",
-    language: "Hindi, English",
-    experience: "8 Years",
-    image: "https://cdn-icons-png.flaticon.com/512/4140/4140048.png",
-    gradient: ["#FFD700", "#FF8C00"],
+    name: 'Priya Sharma',
+    language: 'Hindi, English',
+    experience: '8 Years',
+    image: 'https://cdn-icons-png.flaticon.com/512/4140/4140048.png',
+    gradient: ['#FFD700', '#FF8C00'],
   },
   {
     id: 2,
-    name: "Rahul Verma",
-    language: "English, Tamil",
-    experience: "6 Years",
-    image: "https://cdn-icons-png.flaticon.com/512/4322/4322991.png",
-    gradient: ["#36D1DC", "#5B86E5"],
+    name: 'Rahul Verma',
+    language: 'English, Tamil',
+    experience: '6 Years',
+    image: 'https://cdn-icons-png.flaticon.com/512/4322/4322991.png',
+    gradient: ['#36D1DC', '#5B86E5'],
   },
   {
     id: 3,
-    name: "Sneha Patil",
-    language: "Marathi, Hindi",
-    experience: "5 Years",
-    image: "https://cdn-icons-png.flaticon.com/512/4322/4322994.png",
-    gradient: ["#FF5F6D", "#FFC371"],
+    name: 'Sneha Patil',
+    language: 'Marathi, Hindi',
+    experience: '5 Years',
+    image: 'https://cdn-icons-png.flaticon.com/512/4322/4322994.png',
+    gradient: ['#FF5F6D', '#FFC371'],
   },
   {
     id: 4,
-    name: "Amit Rao",
-    language: "English, Gujarati",
-    experience: "10 Years",
-    image: "https://cdn-icons-png.flaticon.com/512/4140/4140061.png",
-    gradient: ["#11998E", "#38EF7D"],
+    name: 'Amit Rao',
+    language: 'English, Gujarati',
+    experience: '10 Years',
+    image: 'https://cdn-icons-png.flaticon.com/512/4140/4140061.png',
+    gradient: ['#11998E', '#38EF7D'],
   },
 ];
 
 export default function ConsultWithExpertSection() {
   const { theme } = useTheme();
-  const isDark = theme.mode === "dark";
+  const isDark = theme.mode === 'dark';
 
   return (
-    <View
-      style={[
-        tw`py-8`,
-        { backgroundColor: theme.background },
-      ]}
-    >
+    <View style={[tw`py-8`, { backgroundColor: theme.background }]}>
       {/* Header */}
       <View style={tw`flex-row items-center justify-between mb-4 mx-5`}>
-        <Text
-          style={[
-            tw`text-lg font-bold`,
-            { color: theme.text },
-          ]}
-        >
+        <Text style={[tw`text-lg font-bold`, { color: theme.text }]}>
           Consult with Experts
         </Text>
 
@@ -75,7 +65,7 @@ export default function ConsultWithExpertSection() {
           <Text
             style={[
               tw`text-sm font-semibold`,
-              { color: isDark ? "#FFD700" : "#E67E22" },
+              { color: isDark ? '#FFD700' : '#E67E22' },
             ]}
           >
             See All →
@@ -88,20 +78,18 @@ export default function ConsultWithExpertSection() {
         horizontal
         showsHorizontalScrollIndicator={false}
         data={astrologers}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={item => item.id.toString()}
         snapToInterval={cardWidth + 16}
         decelerationRate="fast"
-        contentContainerStyle={tw`px-2`}
+        contentContainerStyle={tw`px-5`}
         renderItem={({ item }) => (
           <TouchableOpacity
-           
+            activeOpacity={0.9}
             style={[
-              tw`rounded-2xl overflow-hidden mx-2`,
+              tw`rounded-2xl overflow-hidden shadow-lg mb-5`,
               {
                 width: cardWidth,
-                backgroundColor: theme.card,
-                borderWidth: 1,
-                borderColor: theme.border,
+                marginRight: 15,
               },
             ]}
           >
@@ -124,7 +112,7 @@ export default function ConsultWithExpertSection() {
               style={[
                 tw`py-2`,
                 {
-                  backgroundColor: isDark ? "#0F172A" : "#FFFFFF",
+                  backgroundColor: isDark ? '#0F172A' : '#FFFFFF',
                 },
               ]}
             >
@@ -138,10 +126,7 @@ export default function ConsultWithExpertSection() {
               </Text>
 
               <Text
-                style={[
-                  tw`text-sm text-center mt-1`,
-                  { color: theme.subText },
-                ]}
+                style={[tw`text-sm text-center mt-1`, { color: theme.subText }]}
               >
                 {item.language}
               </Text>
@@ -149,7 +134,7 @@ export default function ConsultWithExpertSection() {
               <Text
                 style={[
                   tw`text-sm text-center mt-1`,
-                  { color: isDark ? "#EAB308" : "#B45309" },
+                  { color: isDark ? '#EAB308' : '#B45309' },
                 ]}
               >
                 Experience: {item.experience}

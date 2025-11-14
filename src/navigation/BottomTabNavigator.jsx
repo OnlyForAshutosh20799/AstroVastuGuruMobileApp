@@ -21,6 +21,7 @@ export default function BottomTabNavigator() {
   return (
     <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
       <Tab.Navigator
+      initialRouteName="Home" 
         screenOptions={({ route }) => ({
           headerShown: false,
           tabBarShowLabel: true,
@@ -64,12 +65,14 @@ export default function BottomTabNavigator() {
           },
         })}
       >
-        <Tab.Screen name="Home" component={HomeScreen} />
+        
         <Tab.Screen name="Kundli" component={KundliStack} />
+        <Tab.Screen name="Book Pooja" component={BookPoojaStack} />
+        <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Horoscope" component={HoroscopeScreen} />
         <Tab.Screen name="Astrologer" component={AstrologerScreen} />
-        <Tab.Screen name="Book Pooja" component={BookPoojaStack} />
-        <Tab.Screen name="Blog" component={BlogScreen} />
+        
+        {/* <Tab.Screen name="Blog" component={BlogScreen} /> */}
       </Tab.Navigator>
     </NavigationContainer>
   );
