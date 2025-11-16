@@ -1,13 +1,12 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native";
+import { NavigationContainer, DefaultTheme, DarkTheme, getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useTheme } from "../Context/ThemContext";
 
 // Screens
 import HomeScreen from "../screens/Home/HomeScreen";
 import HoroscopeScreen from "../screens/Horoscope/HoroscopeScreen";
-import AstrologerScreen from "../screens/Astrologer/AstrologerScreen";
 import BookPoojaStack from "./stackNavigator/stacks/BookPoojaStack";
 import KundliStack from "./stackNavigator/stacks/KundliStack";
 import AstrologerStack from "./stackNavigator/stacks/AstrologerStack";
@@ -16,16 +15,16 @@ const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
   const { theme } = useTheme();
-  const isDark = theme.mode === "dark"; // ✅ use your context mode
+  const isDark = theme.mode === "dark";
 
   return (
     <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
       <Tab.Navigator
-      initialRouteName="Home" 
+        initialRouteName="Home"
         screenOptions={({ route }) => ({
           headerShown: false,
           tabBarShowLabel: true,
-          tabBarActiveTintColor: isDark ? "#FFD700" : "#FF9933", // gold for dark, saffron for light
+          tabBarActiveTintColor: isDark ? "#FFD700" : "#FF9933",
           tabBarInactiveTintColor: isDark ? "#AAAAAA" : "gray",
           tabBarStyle: {
             backgroundColor: isDark ? "#0D0D0D" : "#FFFFFF",
@@ -34,7 +33,7 @@ export default function BottomTabNavigator() {
             height: 60,
             paddingBottom: 5,
           },
-          tabBarIcon: ({ color, size }) => {
+          tabBarIcon: ({ color }) => {
             let iconName;
 
             switch (route.name) {
@@ -53,9 +52,6 @@ export default function BottomTabNavigator() {
               case "Book Pooja":
                 iconName = "flame-outline";
                 break;
-              case "Blog":
-                iconName = "newspaper-outline";
-                break;
               default:
                 iconName = "ellipse-outline";
                 break;
@@ -65,14 +61,35 @@ export default function BottomTabNavigator() {
           },
         })}
       >
-        
+
         <Tab.Screen name="Kundli" component={KundliStack} />
         <Tab.Screen name="Book Pooja" component={BookPoojaStack} />
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Horoscope" component={HoroscopeScreen} />
-        <Tab.Screen name="Astrologer" component={AstrologerStack} />
-        
-        {/* <Tab.Screen name="Blog" component={BlogScreen} /> */}
+
+        {/* ⭐ IMPORTANT — Tab hide on subscreens */}
+        <Tab.Screen
+          name="Astrologer"
+          component={AstrologerStack}
+          options={({ route }) => {
+            const routeName = getFocusedRouteNameFromRoute(route) ?? "Astrologer Screen";
+
+            const hideTabsOn = [
+              "Astrologer Profile",
+              "Call with Astrologer",
+              "Chat with Astrologer",
+            ];
+
+            return {
+              tabBarStyle: {
+                backgroundColor: isDark ? "#0D0D0D" : "#FFFFFF",
+                height: 60,
+                display: hideTabsOn.includes(routeName) ? "none" : "flex",
+              },
+            };
+          }}
+        />
+
       </Tab.Navigator>
     </NavigationContainer>
   );

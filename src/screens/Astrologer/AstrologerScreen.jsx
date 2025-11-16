@@ -1,6 +1,5 @@
 // AstrologerScreen.jsx
 import {
-  StyleSheet,
   Text,
   View,
   TouchableOpacity,
@@ -63,9 +62,9 @@ const AstrologerScreen = () => {
   const buttonWidth = isTablet ? '30%' : '47%';
 
   const handlePress = (key) => {
-  if (key === "profile") navigation.navigate("Astrologer List");
-  if (key === "chat") navigation.navigate("ChatList");
-  if (key === "call") navigation.navigate("CallList");
+  if (key === "profile") navigation.navigate("Astrologer Profile");
+  if (key === "chat") navigation.navigate("Chat with Astrologer");
+  if (key === "call") navigation.navigate("Call with Astrologer");
   if (key === "register") navigation.navigate("AstrologerRegistration");
 };
 
