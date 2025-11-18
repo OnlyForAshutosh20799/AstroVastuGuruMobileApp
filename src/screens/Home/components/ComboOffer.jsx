@@ -107,7 +107,7 @@ const ComboOffersScreen = () => {
         <View style={tw`flex-1`}>
           <Text
             style={[
-              tw`text-2xl font-bold mb-1`,
+              tw`text-xl font-bold mb-1`,
               { color: theme.text, textAlign: "left" },
             ]}
           >

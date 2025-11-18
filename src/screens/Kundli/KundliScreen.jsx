@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -17,6 +17,7 @@ import tw from 'twrnc';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useTheme } from '../../Context/ThemContext';
 import { useNavigation } from '@react-navigation/native';
+import { useRoute } from "@react-navigation/native";
 
 const { width, height } = Dimensions.get('window');
 
@@ -155,7 +156,24 @@ const BookCategoryScreen = () => {
   const insets = useSafeAreaInsets();
   const isTablet = width >= 768;
 
-  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+  const route = useRoute();
+  const { serviceId } = route.params ?? {};
+ 
+
+ const initialCategory =
+  serviceId !== undefined && categories[serviceId]
+    ? categories[serviceId]
+    : categories[0];
+
+const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+
+// 🔥 FIX
+useEffect(() => {
+  if (serviceId !== undefined && categories[serviceId]) {
+    setSelectedCategory(categories[serviceId]);
+  }
+}, [serviceId]);
+
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
   const books = dummyBooks[selectedCategory] || [];

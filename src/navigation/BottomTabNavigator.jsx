@@ -5,7 +5,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { useTheme } from "../Context/ThemContext";
 
 // Screens
-import HomeScreen from "../screens/Home/HomeScreen";
+import HomeStack from "./stackNavigator/stacks/HomeStack";
 import HoroscopeScreen from "../screens/Horoscope/HoroscopeScreen";
 import BookPoojaStack from "./stackNavigator/stacks/BookPoojaStack";
 import KundliStack from "./stackNavigator/stacks/KundliStack";
@@ -61,10 +61,10 @@ export default function BottomTabNavigator() {
           },
         })}
       >
-
+         <Tab.Screen name="Home" component={HomeStack} />
         <Tab.Screen name="Kundli" component={KundliStack} />
         <Tab.Screen name="Book Pooja" component={BookPoojaStack} />
-        <Tab.Screen name="Home" component={HomeScreen} />
+       
         <Tab.Screen name="Horoscope" component={HoroscopeScreen} />
 
         {/* ⭐ IMPORTANT — Tab hide on subscreens */}
