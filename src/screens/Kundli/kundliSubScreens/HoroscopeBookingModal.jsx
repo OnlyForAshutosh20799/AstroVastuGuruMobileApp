@@ -359,7 +359,7 @@ const HoroscopeBookingModal = ({ visible, onClose }) => {
             {/* Footer */}
             <Text
               style={[
-                tw`text-xs text-center mt-5 mb-2`,
+                tw`text-xs text-center mt-5 mb-8`,
                 { color: theme.subText },
               ]}
             >

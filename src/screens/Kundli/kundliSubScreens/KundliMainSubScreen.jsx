@@ -1,4 +1,3 @@
-// components/EducationHoroscopeScreen.jsx
 import React, { useState, useLayoutEffect } from 'react';
 import {
   View,
@@ -23,6 +22,7 @@ export default function KundliMainSubScreen() {
   const navigation = useNavigation();
 
   const { item } = route.params || {};
+  console.log("Hello", item)
   const [cardData, setCardData] = useState(item);
    const [modalVisible, setModalVisible] = useState(false);
 
@@ -37,7 +37,6 @@ export default function KundliMainSubScreen() {
         backgroundColor: headerBg,
       },
       headerTitle: item?.title || 'Horoscope',
-      headerTitleAlign: 'center',
       headerTitleStyle: {
         fontSize: 21,
         fontWeight: '700',
@@ -47,7 +46,7 @@ export default function KundliMainSubScreen() {
       headerLeft: () => (
         <TouchableOpacity
           onPress={() => navigation.goBack()}
-          style={tw`ml-3 rounded-full p-2`}
+          style={tw` rounded-full pr-2`}
         >
           <Ionicons name="arrow-back" size={22} color={theme.text} />
         </TouchableOpacity>
