@@ -65,7 +65,7 @@ const AstrologerScreen = () => {
   if (key === "profile") navigation.navigate("Astrologer Profile");
   if (key === "chat") navigation.navigate("Chat with Astrologer");
   if (key === "call") navigation.navigate("Call with Astrologer");
-  if (key === "register") navigation.navigate("AstrologerRegistration");
+  if (key === "register") navigation.navigate("Astrologer Registration");
 };
 
   return (

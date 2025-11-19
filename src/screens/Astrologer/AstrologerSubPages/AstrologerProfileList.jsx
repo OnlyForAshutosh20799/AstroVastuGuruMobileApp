@@ -211,14 +211,14 @@ const AstrologerProfileList = ({ navigation }) => {
           value={searchText}
           onChangeText={setSearchText}
           style={{
-  backgroundColor: isDark ? '#1C1C1C' : '#F8F8F8',
-  color: theme.text,
-  paddingVertical: 12,
-  paddingHorizontal: 15,
-  borderRadius: 12,
-  fontSize: 16,
-  marginBottom: 12,
-}}
+            backgroundColor: isDark ? '#1C1C1C' : '#F8F8F8',
+            color: theme.text,
+            paddingVertical: 12,
+            paddingHorizontal: 15,
+            borderRadius: 12,
+            fontSize: 16,
+            marginBottom: 12,
+          }}
         />
 
         {/* Filter Row */}

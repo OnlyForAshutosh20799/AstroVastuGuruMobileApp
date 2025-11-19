@@ -78,6 +78,8 @@ export default function BottomTabNavigator() {
               "Astrologer Profile",
               "Call with Astrologer",
               "Chat with Astrologer",
+              "Astrologer Registration",
+              "Login Form"
             ];
 
             return {
