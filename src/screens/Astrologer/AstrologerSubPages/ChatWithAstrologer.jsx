@@ -67,7 +67,7 @@ const ChatWithAstrologer = ({ navigation }) => {
   const renderItem = ({ item }) => (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate('IndividualAstrologerProfilePage', { data: item })
+        navigation.navigate('Profile', { data: item })
       }
       activeOpacity={0.7}
       style={[
@@ -135,7 +135,7 @@ const ChatWithAstrologer = ({ navigation }) => {
       </View>
 
       <TouchableOpacity
-        onPress={() => navigation.navigate('AstrologerProfile', { data: item })}
+        onPress={() => navigation.navigate('Profile', { data: item })}
         style={{
           backgroundColor: theme.primary,
           paddingHorizontal: 12,

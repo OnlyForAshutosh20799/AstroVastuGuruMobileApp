@@ -67,7 +67,7 @@ const AstrologerProfileList = ({ navigation }) => {
   const renderItem = ({ item }) => (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate('IndividualAstrologerProfilePage', { data: item })
+        navigation.navigate('Profile', { data: item })
       }
       activeOpacity={0.7}
       style={[
@@ -136,7 +136,7 @@ const AstrologerProfileList = ({ navigation }) => {
 
       <TouchableOpacity
         onPress={() =>
-          navigation.navigate('IndividualAstrologerProfilePage', { data: item })
+          navigation.navigate('Profile', { data: item })
         }
         style={{
           backgroundColor: theme.primary,

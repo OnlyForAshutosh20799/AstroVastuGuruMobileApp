@@ -14,6 +14,7 @@ import {
 import tw from 'twrnc';
 import { useTheme } from '../../../Context/ThemContext';
 import { useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const isTablet = SCREEN_WIDTH >= 768;
@@ -22,6 +23,8 @@ export default function DevNairProfile() {
   const { theme } = useTheme();
   const isDark = theme.mode === 'dark';
 
+  const navigation = useNavigation()
+
   const route = useRoute();
   const { data } = route.params;
 
@@ -29,11 +32,11 @@ export default function DevNairProfile() {
   const HERO_IMAGE = { uri: astrologerData.image };
 
   return (
-    <SafeAreaView
+    <View
       style={{
         flex: 1,
         backgroundColor: theme.background,
-        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+      
       }}
     >
       <StatusBar
@@ -43,19 +46,18 @@ export default function DevNairProfile() {
       />
 
       <ScrollView
-        showsVerticalScrollIndicator={false} // Hides the bar
-        horizontal={false} // Prevent horizontal scroll
+        showsVerticalScrollIndicator={false} 
+        horizontal={false} 
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 20 }}
       >
         {/* Top Section */}
-        <View style={tw`p-4 pt-2`}>
+        <View style={tw`px-4 `}>
           <View style={tw`${isTablet ? 'flex-row' : ''}`}>
             {/* Text Section (fixed padding so text never hides) */}
             <View
               style={[
                 isTablet ? tw`w-2/3 pr-4` : tw`w-full`,
-                !isTablet && { paddingRight: 120 }, // space for avatar
+                !isTablet && { paddingRight: 120 }, 
               ]}
             >
               <Text
@@ -81,6 +83,12 @@ export default function DevNairProfile() {
               {/* Buttons */}
               <View style={tw`flex-row items-center mt-2`}>
                 <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate('Book your Astrologer here', {
+                      data: data,
+                       service: 'Call',
+                    })
+                  }
                   style={[
                     tw`px-4 py-2 rounded-full mr-2`,
                     { backgroundColor: theme.primary },
@@ -90,12 +98,18 @@ export default function DevNairProfile() {
                 </TouchableOpacity>
 
                 <TouchableOpacity
+                 onPress={() =>
+                    navigation.navigate('Book your Astrologer here', {
+                      data: data,
+                       service: 'Chat',
+                    })
+                  }
                   style={[
                     tw`px-4 py-2 rounded-full border`,
                     { borderColor: isDark ? '#666' : '#ccc' },
                   ]}
                 >
-                  <Text style={{ color: theme.text }}>Message</Text>
+                  <Text style={{ color: theme.text }}>Chat</Text>
                 </TouchableOpacity>
               </View>
 
@@ -153,29 +167,6 @@ export default function DevNairProfile() {
             Find {astrologerData.name}'s Astrology Services
           </Text>
 
-          <View style={tw`flex-row items-center mb-4`}>
-            <TextInput
-              placeholder="Select Your Concern"
-              placeholderTextColor={theme.subText}
-              style={[
-                tw`flex-1 rounded-full px-4 py-2 mr-2`,
-                {
-                  backgroundColor: isDark ? '#222' : '#fff',
-                  color: theme.text,
-                  borderWidth: 1,
-                  borderColor: isDark ? '#333' : '#ddd',
-                },
-              ]}
-            />
-            <TouchableOpacity
-              style={[
-                tw`px-4 py-2 rounded-full`,
-                { backgroundColor: theme.primary },
-              ]}
-            >
-              <Text style={tw`text-white`}>Search</Text>
-            </TouchableOpacity>
-          </View>
 
           {/* Popular Services */}
           <Text style={{ color: theme.subText, marginBottom: 8, fontSize: 13 }}>
@@ -242,6 +233,6 @@ export default function DevNairProfile() {
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }

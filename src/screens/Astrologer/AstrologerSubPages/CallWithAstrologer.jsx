@@ -66,7 +66,7 @@ const CallWithAstrologer = ({ navigation }) => {
   // ---------- Render Card ---------- //
   const renderItem = ({ item }) => (
     <TouchableOpacity
-       onPress={() => navigation.navigate('IndividualAstrologerProfilePage', { data: item })}
+       onPress={() => navigation.navigate('Profile', { data: item })}
       activeOpacity={0.7}
       style={[
         tw`flex-row items-center py-3 px-4 mb-3`,
@@ -133,7 +133,7 @@ const CallWithAstrologer = ({ navigation }) => {
       </View>
 
       <TouchableOpacity
-        onPress={() => navigation.navigate('AstrologerProfile', { data: item })}
+        onPress={() => navigation.navigate('Profile', { data: item })}
         style={{
           backgroundColor: theme.primary,
           paddingHorizontal: 12,

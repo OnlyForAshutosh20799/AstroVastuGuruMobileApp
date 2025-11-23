@@ -79,7 +79,9 @@ export default function BottomTabNavigator() {
               "Call with Astrologer",
               "Chat with Astrologer",
               "Astrologer Registration",
-              "Login Form"
+              "Login Form",
+              "Profile",
+              "Book your Astrologer here"
             ];
 
             return {
