@@ -6,8 +6,7 @@ import CallWithAstrologer from "../../../screens/Astrologer/AstrologerSubPages/C
 import ChatWithAstrologer from "../../../screens/Astrologer/AstrologerSubPages/ChatWithAstrologer";
 import AstrologerRegistration from "../../../screens/Astrologer/AstrologerSubPages/AstrologerRegistration"
 import LoginForm from "../../../screens/Astrologer/AstrologerSubPages/LoginForm";
-
-
+import IndividualAstrologerProfilePage from '../../../screens/Astrologer/AstrologerSubPages/IndividualAstrologerProfilePage'
 
 
 const Stack = createNativeStackNavigator();
@@ -21,6 +20,7 @@ export default function AstrologerStack() {
       <Stack.Screen name="Chat with Astrologer" component={ChatWithAstrologer} options={{headerShown: true}}/>
       <Stack.Screen name="Astrologer Registration" component={AstrologerRegistration} options={{headerShown: true}}/>
       <Stack.Screen name="Login Form" component={LoginForm} options={{headerShown: false}}/>
+      <Stack.Screen name="IndividualAstrologerProfilePage" component={IndividualAstrologerProfilePage} options={{headerShown: false}}/>
     </Stack.Navigator>
   );
 }

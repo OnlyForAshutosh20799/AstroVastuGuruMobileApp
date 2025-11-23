@@ -66,7 +66,9 @@ const AstrologerProfileList = ({ navigation }) => {
   // ---------- Render Card ---------- //
   const renderItem = ({ item }) => (
     <TouchableOpacity
-      onPress={() => navigation.navigate('AstrologerProfile', { data: item })}
+      onPress={() =>
+        navigation.navigate('IndividualAstrologerProfilePage', { data: item })
+      }
       activeOpacity={0.7}
       style={[
         tw`flex-row items-center py-3 px-4 mb-3`,
@@ -133,7 +135,9 @@ const AstrologerProfileList = ({ navigation }) => {
       </View>
 
       <TouchableOpacity
-        onPress={() => navigation.navigate('AstrologerProfile', { data: item })}
+        onPress={() =>
+          navigation.navigate('IndividualAstrologerProfilePage', { data: item })
+        }
         style={{
           backgroundColor: theme.primary,
           paddingHorizontal: 12,
