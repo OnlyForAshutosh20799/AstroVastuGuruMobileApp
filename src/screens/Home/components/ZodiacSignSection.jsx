@@ -10,9 +10,10 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import tw from 'twrnc';
 import { useTheme } from '../../../Context/ThemContext';
+import { useNavigation } from '@react-navigation/native';
 
 const { width } = Dimensions.get('window');
-const cardWidth = width * 0.40; // more compact card
+const cardWidth = width * 0.4; // more compact card
 const cardSpacing = 14;
 
 const zodiacData = [
@@ -106,6 +107,8 @@ export default function ZodiacSignSection() {
   const { theme } = useTheme();
   const isDark = theme.mode === 'dark';
 
+  const navigation = useNavigation();
+
   const bgGradient = isDark ? ['#0F0F1A', '#1A1A2E'] : ['#FFF8E7', '#FFF1D6'];
   const titleColor = isDark ? '#F8F8FF' : '#4B2800';
   const subtitleColor = isDark ? '#C5C6D0' : '#6B4E16';
@@ -181,6 +184,12 @@ export default function ZodiacSignSection() {
 
               {/* Button */}
               <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('Horoscope', {
+                    screen: 'HoroscopeScreen',
+                    params: { item },
+                  })
+                }
                 style={tw`bg-white/25 border border-white/30 rounded-full px-4 py-2 items-center mt-2`}
               >
                 <Text style={tw`text-white font-semibold text-xs`}>

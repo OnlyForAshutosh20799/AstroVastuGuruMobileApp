@@ -10,6 +10,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import tw from 'twrnc';
 import { useTheme } from '../../../Context/ThemContext';
+import { useNavigation } from '@react-navigation/native';
 
 const { width } = Dimensions.get('window');
 const cardWidth = width * 0.4;
@@ -53,6 +54,8 @@ export default function ConsultWithExpertSection() {
   const { theme } = useTheme();
   const isDark = theme.mode === 'dark';
 
+  const navigation = useNavigation()
+
   return (
     <View style={[tw`py-8`, { backgroundColor: theme.background }]}>
       {/* Header */}
@@ -61,7 +64,9 @@ export default function ConsultWithExpertSection() {
           Consult with Experts
         </Text>
 
-        <TouchableOpacity activeOpacity={0.8}>
+        <TouchableOpacity 
+        onPress={()=> navigation.navigate('Astrologer')}
+        activeOpacity={0.8}>
           <Text
             style={[
               tw`text-sm font-semibold`,

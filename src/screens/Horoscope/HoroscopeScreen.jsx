@@ -18,6 +18,7 @@ import { TabView, TabBar } from 'react-native-tab-view';
 import tw from 'twrnc';
 import { useTheme } from '../../Context/ThemContext';
 import { BlurView } from '@react-native-community/blur';
+import { useRoute } from '@react-navigation/native';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -123,6 +124,8 @@ const zodiacs = [
 // Horoscope Content Component
 // -------------------------------------------------
 const HoroscopeContent = ({ selectedSign, contentKey, theme, isDark }) => {
+
+
   const current = zodiacDetails[selectedSign] || zodiacDetails['Aries'];
   const blocks = ['love', 'health', 'career', 'emotion', 'travel'];
 
@@ -181,6 +184,11 @@ export default function HoroscopeScreen() {
   const { theme } = useTheme();
   const isDark = theme.mode === 'dark';
 
+  const route = useRoute();
+    // const { item } = route.params;
+    const item = route.params?.item;
+  
+
   const [selectedSign, setSelectedSign] = useState('Aries');
   const [tabIndex, setTabIndex] = useState(1);
   const [routes] = useState([
@@ -190,6 +198,12 @@ export default function HoroscopeScreen() {
     { key: 'monthly', title: 'Monthly' },
     { key: 'yearly', title: 'Yearly' },
   ]);
+
+  useEffect(() => {
+  if (item?.name) {
+    setSelectedSign(item.name);
+  }
+}, [item]);
 
   const scrollX = useRef(new Animated.Value(0)).current;
   const flatListRef = useRef(null);
