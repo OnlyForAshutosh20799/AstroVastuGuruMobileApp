@@ -28,7 +28,7 @@ const navigation = useNavigation();
         </Text>
       </View>
         <TouchableOpacity activeOpacity={0.8}>
-        <Ionicons name="menu-outline" size={28} color={theme.text} />
+        {/* <Ionicons name="menu-outline" size={28} color={theme.text} /> */}
       </TouchableOpacity>
     </View>
   );
